@@ -1,0 +1,35 @@
+﻿@model List<Client>
+
+    <!--Simple dashboard showing client details-->
+<div class="text-center">
+    <h2>Connected Clients</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>IP Address</th>
+                <th>Port</th>
+                <th>Jobs Completed</th>
+                <th>Last Received Poll</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--Iterates over each client in database and displays-->
+            @foreach (var client in Model)
+            {
+                <tr>
+                    <td>@client.IpAddress</td>
+                    <td>@client.Port</td>
+                    <td>@client.JobsCompleted</td>
+                    <td>@client.LastSend</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!--Refreshes page automatically-->
+<script>
+    setInterval(function() {
+        location.reload();
+    }, 10000); // doing 10000 (10 seconds) for demonstration purposes
+</script>
